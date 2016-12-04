@@ -9,7 +9,7 @@ var Port = os.Getenv("PORT")
 
 func main() {
 	if Port == "" {
-		Port = "3005"
+		Port = "3006"
 	}
 	server.StartServer(Port)
 }

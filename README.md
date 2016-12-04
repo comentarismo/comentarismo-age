@@ -24,7 +24,7 @@ Inside the redis bayes the following is applied:
 
 Running defaults & debug mode & learn age names
 ```
-$ AGE_DEBUG=true LEARNAGE=true PORT=3004 godep go run main.go
+$ AGE_DEBUG=true LEARNAGE=true PORT=3006 godep go run main.go
 ```
 
 # Options

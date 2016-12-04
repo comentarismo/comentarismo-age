@@ -58,6 +58,8 @@ func init() {
 				targetFile := fmt.Sprintf("/age/en/yob%d.txt", j)
 				log.Println("Finished learning ", <-done, targetFile)
 			}
+			defer log.Println("Finished processing all files o/")
+
 		}()
 
 	}

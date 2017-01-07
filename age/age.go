@@ -332,7 +332,6 @@ func GetOccurances(lang, text string) (counts map[string]uint) {
 	return
 }
 
-
 func Tally(category string) (sum uint64) {
 	vals := RedisClient.HVals(Redis_prefix + category)
 

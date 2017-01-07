@@ -113,7 +113,7 @@ func TestMaleAgeHandler(t *testing.T) {
 
 			So(ageReport.Error, ShouldBeBlank)
 			So(ageReport.Code, ShouldEqual, 200)
-			So(ageReport.Age, ShouldEqual, "35_44")
+			So(ageReport.Age, ShouldEqual, "18_24")
 		})
 
 	})

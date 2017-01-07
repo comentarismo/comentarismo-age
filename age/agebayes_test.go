@@ -1,8 +1,8 @@
 package age_test
 
 import (
-	"testing"
 	"comentarismo-age/age"
+	"testing"
 )
 
 func TestTidy(t *testing.T) {
@@ -31,7 +31,7 @@ func TestOccurances(t *testing.T) {
 
 func TestFlushEn(t *testing.T) {
 	lang := "en"
-	age.Train("good", "sunshine drugs love sex lobster sloth",lang)
+	age.Train("good", "sunshine drugs love sex lobster sloth", lang)
 	age.Flush()
 
 	exists := age.RedisClient.Exists(age.Redis_prefix + "good")
@@ -43,15 +43,15 @@ func TestFlushEn(t *testing.T) {
 func TestClassifyEn(t *testing.T) {
 	lang := "en"
 	age.Flush()
-	age.Train("good", "sunshine drugs love sex lobster sloth",lang)
-	age.Train("bad", "fear death horror government zombie god",lang)
+	age.Train("good", "sunshine drugs love sex lobster sloth", lang)
+	age.Train("bad", "fear death horror government zombie god", lang)
 
-	class := age.Classify("sloths are so cute i love them",lang)
+	class := age.Classify("sloths are so cute i love them", lang)
 	if class != "good" {
 		t.Errorf("Classify failed, should be good, result: %s", class)
 	}
 
-	class = age.Classify("i fear god and love the government",lang)
+	class = age.Classify("i fear god and love the government", lang)
 	if class != "bad" {
 		t.Errorf("Classify failed, should be bad, result: %s", class)
 	}
@@ -61,8 +61,8 @@ func TestUntrainEn(t *testing.T) {
 	lang := "en"
 
 	age.Flush()
-	age.Train("good", "sunshine drugs love sex lobster sloth",lang)
-	age.Untrain("good", "sunshine drugs love sex lobster sloth",lang)
+	age.Train("good", "sunshine drugs love sex lobster sloth", lang)
+	age.Untrain("good", "sunshine drugs love sex lobster sloth", lang)
 
 	exists := age.RedisClient.Exists(age.Redis_prefix + "good")
 	if exists.Val() {

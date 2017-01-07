@@ -22,28 +22,28 @@ func TestAgeColdstart(t *testing.T) {
 			var end = year - 18
 
 			log.Println("Will start server on learning mode")
-			done := make(chan bool, end - start)
+			done := make(chan bool, end-start)
 			for i := start; i <= end; i++ {
 				targetFile := fmt.Sprintf("/en/yob%d.txt", i)
 				age_range := ""
 				thisage := year - i
 
-				if (thisage >= 18 && thisage <= 24) {
+				if thisage >= 18 && thisage <= 24 {
 					age_range = "18_24"
-				} else if (thisage >= 25 && thisage <= 34) {
+				} else if thisage >= 25 && thisage <= 34 {
 					age_range = "25_34"
-				} else if (thisage >= 35 && thisage <= 44) {
+				} else if thisage >= 35 && thisage <= 44 {
 					age_range = "35_44"
-				} else if (thisage >= 45 && thisage <= 54) {
+				} else if thisage >= 45 && thisage <= 54 {
 					age_range = "45_54"
-				} else if (thisage >= 55 && thisage <= 64) {
+				} else if thisage >= 55 && thisage <= 64 {
 					age_range = "55_64"
 				} else {
 					log.Println("Will skip year outside interest age range --> ", i)
 					done <- true
 					continue
 				}
-				log.Println("Year ", i, " ,age ",thisage, " ,classified as ", age_range, " ,Will learn ", targetFile)
+				log.Println("Year ", i, " ,age ", thisage, " ,classified as ", age_range, " ,Will learn ", targetFile)
 
 				go age.StartLanguageAge(age_range, targetFile, done)
 			}
